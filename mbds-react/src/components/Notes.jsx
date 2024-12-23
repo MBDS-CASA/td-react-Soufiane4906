@@ -1,4 +1,3 @@
-// src/Notes.jsx
 import { useState, useEffect } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import notesData from './data/notes.json';
+import notesData from '../../../data.json';
 
 function Notes() {
     const [notes, setNotes] = useState([]);
@@ -21,15 +20,19 @@ function Notes() {
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell>Title</TableCell>
-                        <TableCell>Description</TableCell>
+                        <TableCell>Course</TableCell>
+                        <TableCell>Student</TableCell>
+                        <TableCell>Date</TableCell>
+                        <TableCell>Grade</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {notes.map((note) => (
-                        <TableRow key={note.id}>
-                            <TableCell>{note.title}</TableCell>
-                            <TableCell>{note.description}</TableCell>
+                        <TableRow key={note.unique_id}>
+                            <TableCell>{note.course}</TableCell>
+                            <TableCell>{note.student.firstname} {note.student.lastname}</TableCell>
+                            <TableCell>{note.date}</TableCell>
+                            <TableCell>{note.grade}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

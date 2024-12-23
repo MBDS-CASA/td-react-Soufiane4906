@@ -3,7 +3,7 @@ function Footer() {
     const year = new Date().getFullYear();
     return (
         <footer>
-            <p>© {year} - [Prenom].[Nom], Tous droits réservés.</p>
+            <p>© {year} - Soufiane.Aniba, Tous droits réservés.</p>
         </footer>
     );
 }
