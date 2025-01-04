@@ -19,7 +19,7 @@ function Header() {
                     transition={{duration: 20, repeat: Infinity, ease: "linear"}}
                 />
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">
-                    MBDS React
+                    MBDS ReactKGKGJFJ
                 </h1>
             </div>
         </motion.header>

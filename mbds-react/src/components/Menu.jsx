@@ -15,6 +15,7 @@ const Menu = ({ onSelect }) => {
         { text: 'Home', icon: <Home size={20} /> },
         { text: 'Notes', icon: <BookOpen size={20} /> },
         { text: 'Etudiants', icon: <Users size={20} /> },
+        { text: 'AddEtudiant', icon: <Users size={20} /> },
         { text: 'Matières', icon: <GraduationCap size={20} /> },
         { text: 'A propos', icon: <Info size={20} /> }
     ];
@@ -37,11 +38,11 @@ const Menu = ({ onSelect }) => {
                         <button
                             onClick={() => handleClick(item.text)}
                             className={`
-                w-full flex items-center gap-4 px-5 py-3.5 rounded-xl
-                transition-all duration-300 ease-in-out
+w-full flex items-center gap-4 px-5 py-3.5 rounded-xl
+transition-all duration-300 ease-in-out bg-gradient-to-r from-gray-800 to-gray-900
                 ${activeItem === item.text
-? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg shadow-green-500/30 scale-105'
-: 'text-gray-300 hover:bg-gray-800/50 hover:text-white hover:scale-102'
+? 'bg-gradient-to-r from-blue-100 to-blue-900 text-white shadow-lg shadow-green-500/30 scale-105'
+: 'text-gray-300 hover:bg-gray-800/50 hover:text-black hover:scale-102'
                             }
               `}
                         >

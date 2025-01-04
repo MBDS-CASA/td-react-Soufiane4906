@@ -1,46 +1,56 @@
-import { useState } from 'react';
-import './App.css';
-
-import Header from './components/Header.jsx';
-import Footer from './components/Footer.jsx';
-import Menu from './components/Menu.jsx';
-import Notes from './components/Notes.jsx';
-import Etudiants from './components/Etudiants.jsx';
-import Matieres from './components/Matieres.jsx';
-import About from './components/About.jsx';
-import Home from "./components/Home.jsx";
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Menu as MenuIcon, X } from 'lucide-react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import Notes from './components/Notes';
+import Etudiants from './components/Etudiants';
+import Matieres from './components/Matieres';
+import About from './components/About';
+import Menu from './components/Menu';
+import AddStudent from "./components/AddStudent.jsx";
+
 
 function App() {
+  const [selectedMenu, setSelectedMenu] = useState('Home');
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const renderContent = () => {
     switch (selectedMenu) {
-      case 'Home':
-        return <Home />;
-      case 'Notes':
-        return <Notes />;
-      case 'Etudiants':
-        return <Etudiants />;
-      case 'Matières':
-        return <Matieres />;
-      case 'A propos':
-        return <About />;
-      default:
-        return <Home />;
+      case 'Home': return <Home />;
+      case 'Notes': return <Notes />;
+      case 'Etudiants': return <Etudiants />;
+      case 'AddEtudiant': return <AddStudent />;
+      case 'Matières': return <Matieres />;
+      case 'A propos': return <About />;
+      default: return <Home />;
     }
   };
 
-  const [selectedMenu, setSelectedMenu] = useState('Home');
-
   return (
-      <div className="contents min-h-screen bg-gray-100">
-        <div className="w-64 fixed h-full bg-gray-900">
-          <div className="flex flex-col h-full">
+      <div className="min-h-screen bg-gray-100">
+        <motion.div
+            className={`fixed h-full bg-gray-900 z-20 transition-all duration-300 ease-in-out`}
+            animate={{ width: isMenuOpen ? '16rem' : '0rem' }}
+        >
+          <div className="flex flex-col h-full overflow-hidden">
             <Menu onSelect={setSelectedMenu} activeItem={selectedMenu} />
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex-1 ml-64">
+        <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="fixed top-4 left-4 z-30 p-2 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors"
+        >
+          {isMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
+        </button>
+
+        <div
+            className={`transition-all duration-300 ease-in-out ${
+                isMenuOpen ? 'ml-64' : 'ml-0'
+            }`}
+        >
           <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-1 p-8">
